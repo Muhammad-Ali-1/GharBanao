@@ -26,7 +26,7 @@ router.post("/add", vendorProtect, upload.single("image"), async (req, res) => {
   const { name, category, description, price } = req.body; // Remove vendorId from destructuring
   // const image = req.file ? req.file.path : null;
   const image = req.file
-    ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
+    ? `${req.protocol}://${req.get("host")}/${req.file.filename}`
     : null;
 
   try {
@@ -82,7 +82,9 @@ router.put(
   async (req, res) => {
     const { id } = req.params;
     const { name, category, description, price } = req.body;
-    const image = req.file ? req.file.path : null;
+    const image = req.file
+      ? `${req.protocol}://${req.get("host")}/${req.file.filename}`
+      : null;
 
     try {
       // Find the product
