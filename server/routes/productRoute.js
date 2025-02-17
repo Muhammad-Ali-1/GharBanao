@@ -8,7 +8,6 @@ const router = express.Router();
 const { vendorProtect } = require("../middlewares/vendorAuthMiddleware");
 const fs = require("fs");
 
-
 // Set up multer for image upload
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -26,9 +25,9 @@ const upload = multer({ storage });
 router.post("/add", vendorProtect, upload.single("image"), async (req, res) => {
   const { name, category, description, price } = req.body; // Remove vendorId from destructuring
   // const image = req.file ? req.file.path : null;
-  const image = req.file ? 
-    `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}` : 
-    null;
+  const image = req.file
+    ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
+    : null;
 
   try {
     const product = new Product({
@@ -41,10 +40,9 @@ router.post("/add", vendorProtect, upload.single("image"), async (req, res) => {
     });
 
     await product.save();
-    res.status(201).json({ message: "Product added successfully", 
-      product,
-      image
-    });
+    res
+      .status(201)
+      .json({ message: "Product added successfully", product, image });
   } catch (error) {
     res
       .status(500)
