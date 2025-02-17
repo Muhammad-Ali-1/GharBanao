@@ -148,14 +148,18 @@ router.get("/userList", async (req, res) => {
 
 router.get("/ping", async (req, res) => {
   try {
+    console.log("Ping received at:", new Date().toISOString()); // Log timestamp
+
     // Respond with a simple message
     res.status(200).send("Server is alive!");
   } catch (error) {
+    console.error("Error keeping server alive:", error.message); // Log error
     res
       .status(500)
       .json({ message: "Error keeping server alive", error: error.message });
   }
 });
+
 // Fetch a product by name
 router.get("/name/:name", async (req, res) => {
   try {
