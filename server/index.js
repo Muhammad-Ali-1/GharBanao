@@ -12,8 +12,6 @@ require("./models/Otp");
 require("./models/product");
 require("./models/orderModel"); // Add order model
 
-
-
 // Import routes
 const authRouter = require("./routes/authRoute");
 const vendorRoute = require("./routes/vendorRoute");
@@ -27,7 +25,7 @@ const app = express();
 // 1) Middlewares
 app.use(
   cors({
-    origin: "https://ghar-banao-xi.vercel.app",
+    origin: "https://gharbanao.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Authorization"],
@@ -37,7 +35,7 @@ app.use(
 // Static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use(express.json({ limit: "50mb" }));  // Increase JSON limit
+app.use(express.json({ limit: "50mb" })); // Increase JSON limit
 app.use(express.urlencoded({ limit: "50mb", extended: true })); // Increase URL-encoded limit
 
 // 2) Routes
@@ -47,8 +45,6 @@ app.use("/api/product", productRoute);
 app.use("/api/designs", designRoutes);
 app.use("/api/vendor", vendorAuthRoutes);
 app.use("/api/orders", orderRoutes); // Add order routes
-
-
 
 // 3) Connect to MongoDB
 connectToDatabase();
@@ -66,9 +62,8 @@ app.use((err, req, res, next) => {
 
 app.get("/", (req, res) => {
   res.status(200).send("Server is running!");
-  console.log("Server received a ping"); 
+  console.log("Server received a ping");
 });
-
 
 // 5) Server
 const PORT = 3000;
