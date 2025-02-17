@@ -21,10 +21,13 @@ const orderRoutes = require("./routes/orderRoute"); // Add order routes
 
 const app = express();
 
+// Static files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // 1) Middlewares
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://gharbanao-5aje.onrender.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Authorization"],
