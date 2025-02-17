@@ -10,13 +10,16 @@ const UserLogin = () => {
   const loginUser = async ({ email, password }) => {
     try {
       setError(null);
-      const res = await fetch("https://gharbanao.vercel.app//api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
       const data = await res.json();
 
       if (res.status === 200) {
