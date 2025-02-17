@@ -116,7 +116,7 @@ const EditProductInfo = () => {
               className="bg-[#E9EDED] text-xl px-7 py-3 outline-none rounded-lg w-full max-w-[500px]"
               type="file"
               onChange={handleFileChange}
-              required
+              // required
             />
           </div>
           {error && <p className="text-red-500 mb-4">{error}</p>}
