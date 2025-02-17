@@ -8,6 +8,14 @@ const router = express.Router();
 const { vendorProtect } = require("../middlewares/vendorAuthMiddleware");
 const fs = require("fs");
 
+const path = require("path");
+
+// Ensure the 'uploads' folder exists
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
 // Set up multer for image upload
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
