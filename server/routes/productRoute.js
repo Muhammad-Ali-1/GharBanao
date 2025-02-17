@@ -105,7 +105,11 @@ router.put(
       if (category) product.category = category;
       if (description) product.description = description;
       if (price) product.price = price;
-      if (image) product.image = image;
+      if (req.file) {
+        product.image = `${req.protocol}://${req.get("host")}/uploads/${
+          req.file.filename
+        }`;
+      }
 
       await product.save();
 
