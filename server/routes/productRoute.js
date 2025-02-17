@@ -145,6 +145,17 @@ router.get("/userList", async (req, res) => {
       .json({ message: "Error fetching products", error: error.message });
   }
 });
+
+router.get("/ping", async (req, res) => {
+  try {
+    // Respond with a simple message
+    res.status(200).send("Server is alive!");
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error keeping server alive", error: error.message });
+  }
+});
 // Fetch a product by name
 router.get("/name/:name", async (req, res) => {
   try {
@@ -192,17 +203,6 @@ router.delete("/:id", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error deleting product", error: error.message });
-  }
-});
-
-router.get("/ping", async (req, res) => {
-  try {
-    // Respond with a simple message
-    res.status(200).send("Server is alive!");
-  } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error keeping server alive", error: error.message });
   }
 });
 
