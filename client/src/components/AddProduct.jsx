@@ -76,7 +76,7 @@ const AddProduct = () => {
               >
                 <option value="Furniture">Furniture</option>
                 <option value="Electronics">Electronics</option>
-                <option value="Flooring">Flooring</option>
+                <option value="Wall Art">Wall Art</option>
                 <option value="Decor">Decor</option>
                 <option value="Kitchen Essentials">Kitchen Essentials</option>
               </select>
