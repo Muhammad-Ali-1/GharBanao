@@ -195,4 +195,15 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.get("/ping", async (req, res) => {
+  try {
+    // Respond with a simple message
+    res.status(200).send("Server is alive!");
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error keeping server alive", error: error.message });
+  }
+});
+
 module.exports = router;
