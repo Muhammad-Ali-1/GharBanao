@@ -8,14 +8,6 @@ const router = express.Router();
 const { vendorProtect } = require("../middlewares/vendorAuthMiddleware");
 const fs = require("fs");
 
-const path = require("path");
-
-// Ensure the 'uploads' folder exists
-const uploadDir = path.join(__dirname, "uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
-
 // Set up multer for image upload
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -34,8 +26,7 @@ router.post("/add", vendorProtect, upload.single("image"), async (req, res) => {
   const { name, category, description, price } = req.body; // Remove vendorId from destructuring
   // const image = req.file ? req.file.path : null;
   const image = req.file
-    ? // ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
-      `https://gharbanao-5aje.onrender.com/uploads/${req.file.filename}`
+    ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
     : null;
 
   try {
