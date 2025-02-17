@@ -122,11 +122,14 @@ const Cart = () => {
         };
 
         // Save to backend
-        const response = await fetch("http://localhost:3000/api/orders", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(orderData),
-        });
+        const response = await fetch(
+          "https://gharbanao-5aje.onrender.com/api/orders",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(orderData),
+          }
+        );
 
         if (!response.ok) {
           const errorData = await response.json();

@@ -1,12 +1,15 @@
 const loginAdmin = async ({ email, password }) => {
   try {
-    const res = await fetch("http://localhost:3000/api/admin/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const res = await fetch(
+      "https://gharbanao-5aje.onrender.com/api/admin/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
     const data = await res.json();
 
     console.log("Response from server:", data); // Log to inspect the response

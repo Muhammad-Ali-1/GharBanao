@@ -27,13 +27,16 @@ const useAddProduct = () => {
         formData.append("image", productData.image);
       }
 
-      const response = await fetch("http://localhost:3000/api/product/add", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: `Bearer ${token}`, // ✅ Send token in headers
-        },
-      });
+      const response = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/product/add",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${token}`, // ✅ Send token in headers
+          },
+        }
+      );
       // Check if the response is JSON
       const contentType = response.headers.get("content-type");
       if (!contentType || !contentType.includes("application/json")) {

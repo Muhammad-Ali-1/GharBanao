@@ -11,20 +11,21 @@ const useAddVendor = () => {
     setError(null);
 
     try {
-        const response = await fetch("http://localhost:3000/api/vendor/add", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-             
-            },
-            body: JSON.stringify(vendorData),
-          });
-           // Check if response is JSON
-    const contentType = response.headers.get("content-type");
-    if (!contentType || !contentType.includes("application/json")) {
-      throw new Error("Unexpected response from server");
-    }
-          
+      const response = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/vendor/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(vendorData),
+        }
+      );
+      // Check if response is JSON
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Unexpected response from server");
+      }
 
       const data = await response.json();
 

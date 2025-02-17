@@ -52,7 +52,7 @@ const ProductList = ({ selectedCategory }) => {
               <div className="w-full h-[350px] flex justify-center items-center overflow-hidden">
                 <img
                   className="px-10 h-[300px] object-contain"
-                  src={`http://localhost:3000/${product.image}`}
+                  src={product.image}
                   alt={product.name}
                 />
               </div>

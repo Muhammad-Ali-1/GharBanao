@@ -1242,14 +1242,17 @@ const Design = () => {
 
       console.log("Saving payload:", payload);
 
-      const response = await fetch("http://localhost:3000/api/designs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/designs",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const result = await response.json();
 
@@ -1265,9 +1268,12 @@ const Design = () => {
       setDesignName("");
 
       // Refresh designs list
-      const designsResponse = await fetch("http://localhost:3000/api/designs", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const designsResponse = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/designs",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       const updatedDesigns = await designsResponse.json();
       setDesigns(updatedDesigns);
     } catch (error) {
@@ -1290,7 +1296,7 @@ const Design = () => {
   const loadDesign = async (designId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/designs/${designId}`,
+        `https://gharbanao-5aje.onrender.com/api/designs/${designId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -1330,11 +1336,14 @@ const Design = () => {
         }
 
         // 2. Make the request
-        const response = await fetch("http://localhost:3000/api/designs", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          "https://gharbanao-5aje.onrender.com/api/designs",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         // // 3. Handle 401 Unauthorized
         // if (response.status === 401) {
@@ -1370,7 +1379,7 @@ const Design = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/designs/${designId}`,
+        `https://gharbanao-5aje.onrender.com/api/designs/${designId}`,
         {
           method: "DELETE",
           headers: {

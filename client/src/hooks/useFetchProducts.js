@@ -10,12 +10,15 @@ const useFetchProducts = () => {
       const token = localStorage.getItem("vendorToken"); // Get token
       if (!token) throw new Error("No vendor token found");
 
-      const response = await fetch("http://localhost:3000/api/product/list", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`, // Attach token to headers
-        },
-      });
+      const response = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/product/list",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach token to headers
+          },
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to fetch products");
       const data = await response.json();

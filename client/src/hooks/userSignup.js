@@ -9,14 +9,17 @@ const UserSignup = () => {
   const registerUser = async ({ name, email, password }) => {
     try {
       setError(null);
-      const res = await fetch("http://localhost:3000/api/auth/signup", {
-        // Sends a POST request to the signup server endpoint (authRoute.js)
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
+      const res = await fetch(
+        "https://gharbanao-5aje.onrender.com/api/auth/signup",
+        {
+          // Sends a POST request to the signup server endpoint (authRoute.js)
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, password }),
+        }
+      );
       const data = await res.json();
 
       if (res.status === 201) {

@@ -9,7 +9,11 @@ const useFetchProductByName = (productName) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/product/name/${encodeURIComponent(productName)}`);
+        const response = await fetch(
+          `https://gharbanao-5aje.onrender.com/api/product/name/${encodeURIComponent(
+            productName
+          )}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch product");
         }
